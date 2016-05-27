@@ -11,15 +11,17 @@ before_install:
   - docker build -t sladz/mypibian .
   - docker ps -a
   
+install: true
+
 before_script:
   - sudo apt-get --yes --no-install-recommends install binfmt-support qemu-user-static
-  - sudo cat /proc/sys/fs/binfmt_misc/status
-  - sudo sh -c "echo ':arm:M::\x7fELF\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/usr/bin/qemu-arm-static:' > /proc/sys/fs/binfmt_misc/register"
+  - echo ':arm:M::\x7fELF\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/usr/bin/qemu-arm-static:' | sudo tee -a /proc/sys/fs/binfmt_misc/register
   
 script:
+  - cp /usr/bin/qemu-arm-static .
   - container_id=$(mktemp)
    # Run container in detached state
   - 'sudo docker run --detach -p 127.0.0.1:80:80 sladz/mypibian "${init}" > "${container_id}"'
   
 # Clean up
-  - sudo docker stop "$(cat ${container_id})"
+  - 'sudo docker stop "$(cat ${container_id})"'
