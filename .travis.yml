@@ -18,7 +18,7 @@ install: true
   #- echo ':arm:M::\x7fELF\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/usr/bin/qemu-arm-static:' | sudo tee -a /proc/sys/fs/binfmt_misc/register
   
 script:
-  - cp /usr/bin/qemu-arm-static .
+  #- cp /usr/bin/qemu-arm-static .
   - container_id=$(mktemp)
    # Run container in detached state
   - 'sudo docker run --detach -p 127.0.0.1:80:80 sladz/mypibian "${init}" > "${container_id}"'
