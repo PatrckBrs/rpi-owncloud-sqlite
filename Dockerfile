@@ -4,5 +4,4 @@ FROM ubuntu:latest
 
 RUN apt-get -y update
 RUN apt-get -y install apache2 mariadb-server
-RUN apt-get -y install php5-json php5-curl
 RUN apt-get -y install php5-intl php5-mcrypt php5-imagick
