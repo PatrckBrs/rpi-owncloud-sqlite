@@ -21,7 +21,7 @@ script:
   #- cp /usr/bin/qemu-arm-static .
   - container_id=$(mktemp)
    # Run container in detached state
-  - 'sudo docker run --detach -p 127.0.0.1:80:80 sladz/mypibian "service nginx status"'
+  - 'sudo docker run --detach -p 127.0.0.1:80:80 sladz/mypibian "${init}" > "${container_id}"'
   - docker ps -a
   
 # Clean up
