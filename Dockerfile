@@ -10,4 +10,4 @@ CMD apt-key add - < Release.key
 CMD echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/Debian_8.0/ /' >> /etc/apt/sources.list.d/owncloud.list
 
 RUN apt-get update
-RUN apt-get install -V owncloud
+RUN apt-get install owncloud
