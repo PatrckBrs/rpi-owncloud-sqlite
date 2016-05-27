@@ -3,7 +3,7 @@
 FROM ubuntu:latest
 
 RUN apt-get -y update
-RUN apt-get -y install nginx ssl-cert php5-fpm php5-mysqlnd wget
+RUN apt-get -y install nginx ssl-cert wget
 
 CMD wget http://download.opensuse.org/repositories/isv:ownCloud:community/Debian_8.0/Release.key
 CMD apt-key add - < Release.key
