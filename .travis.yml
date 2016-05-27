@@ -1,0 +1,21 @@
+---
+sudo: required
+
+env:
+  - init: /sbin/init
+
+services:
+  - docker
+
+before_install:
+  - docker build -t sladz/mypibian .
+  - docker run -d -p 127.0.0.1:80:80 sladz/mypibian /bin/sh -c "sudo service nginx start"
+  - docker ps -a
+  
+script:
+  - container_id=$(mktemp)
+   # Run container in detached state
+  - 'sudo docker run --detach sladz/mypibian "${init}" > "${container_id}"'
+  
+# Clean up
+  - sudo docker stop "$(cat ${container_id})"
