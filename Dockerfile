@@ -1,6 +1,6 @@
 # Pull base image
-#FROM resin/rpi-raspbian:latest
-FROM ubuntu:latest
+FROM resin/rpi-raspbian:latest
+#FROM ubuntu:latest
 
 RUN apt-get -y update
 RUN apt-get -y install nginx ssl-cert wget git curl
