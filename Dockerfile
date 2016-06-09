@@ -3,8 +3,8 @@ FROM resin/rpi-raspbian:latest
 #FROM ubuntu:latest
 
 RUN apt-get -y update
-RUN apt-get install lxc
-RUN apt-get -y install nginx ssl-cert wget git curl
+RUN apt-get -y install lxc
+RUN apt-get -y install nginx ssl-cert wget git curl htop
 
 CMD wget http://download.opensuse.org/repositories/isv:ownCloud:community/Debian_8.0/Release.key
 CMD apt-key add - < Release.key
