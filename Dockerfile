@@ -13,5 +13,11 @@ RUN apt-get install -y nginx php5-fpm php5-gd php-xml-parser \
     mariadb-server owncloud vim openssl ssl-cert \
     smbclient curl libcurl3 bzip2 wget vim sharutils owncloud
 
+# PHP-FPM listen Unix socket
+RUN sed -i -e 's/listen \= 127.0.0.1\:9000/listen \= \/var\/run\/php5-fpm.sock/' /etc/php5/fpm/pool.d/www.conf
+
+# ADD PHP-FPM Configuration
+ADD ./php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
+
 EXPOSE 80
 EXPOSE 443
