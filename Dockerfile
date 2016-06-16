@@ -1,5 +1,5 @@
 # Dockerfile to Owncloud
-FROM resin/rpi-raspbian:latest
+FROM dilgerm/rpi-app-base:jessie
 
 MAINTAINER John Sladerz
 
