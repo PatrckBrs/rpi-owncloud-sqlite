@@ -15,10 +15,6 @@ RUN dpkg-reconfigure -f noninteractive locales
 # mariadb-server owncloud vim openssl ssl-cert \
 # smbclient curl libcurl3 bzip2 wget vim sharutils owncloud
 
-RUN ln -sf /dev/stdout /var/log/nginx/access.log
-RUN ln -sf /dev/stderr /var/log/nginx/error.log
-
-
 # Change the docker default timezone from UTC to Paris
 RUN echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.debian./.fr./g' /etc/ntp.conf
 
