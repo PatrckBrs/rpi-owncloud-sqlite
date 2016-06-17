@@ -25,4 +25,4 @@ ADD ./php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
 EXPOSE 80
 EXPOSE 443
 
-CMD service php5-fpm start && nginx
+CMD service nginx start
