@@ -35,5 +35,4 @@ VOLUME ["/etc/nginx"]
 
 EXPOSE 80 443
 
-CMD service php5-fpm start && nginx
-#CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;", "service php5-fpm"]
