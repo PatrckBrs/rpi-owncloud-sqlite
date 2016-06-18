@@ -10,7 +10,7 @@ RUN locale-gen fr_FR fr_FR.UTF-8
 RUN dpkg-reconfigure -f noninteractive locales
 
 RUN apt-get install -y nginx php5-fpm ntp \
-owncloud
+owncloud vim
 # php5-gd php-xml-parser \
 # php5-intl php5-sqlite php5-mysql php5-curl \
 # mariadb-server owncloud vim openssl ssl-cert \
