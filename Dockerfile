@@ -35,7 +35,7 @@ ADD ./default /etc/nginx/sites-available/default
 # ADD owncloud.conf sites-available
 ADD ./owncloud.conf /etc/nginx/sites-available/owncloud.conf
 # Symbolic Link to Owncloud
-RUN ln -s /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud
+#RUN ln -s /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud
 
 # Volume
 VOLUME ["/var/www"]
