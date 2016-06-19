@@ -30,11 +30,11 @@ RUN sed -i -e 's/listen \= 127.0.0.1\:9000/listen \= \/var\/run\/php5-fpm.sock/'
 # ADD PHP-FPM Configuration
 ADD ./php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
 # ADD index.php info
-#ADD ./index.php /var/www/html/index.php
+ADD ./index.php /var/www/html/index.php
 # ADD default nginx sites-available
 ADD ./default /etc/nginx/sites-available/default
 
-VOLUME ["/usr/share/nginx/www"]
+VOLUME ["/var/www"]
 VOLUME ["/etc/nginx"]
 
 EXPOSE 80 443
