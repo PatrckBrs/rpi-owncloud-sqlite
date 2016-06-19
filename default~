@@ -1,6 +1,6 @@
 server {
 	listen 80 ;
-	server_name codexatomos.local; 
+ 
 	root /var/www/;
  
 	index index.php index.html;
