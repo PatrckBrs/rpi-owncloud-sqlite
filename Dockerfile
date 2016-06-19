@@ -45,10 +45,14 @@ ADD ./default /etc/nginx/sites-available/default
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 
 # Volume
-VOLUME ["/var/www", "/etc/nginx"]
+VOLUME ["/etc/nginx", "/etc/nginx/conf.d", "/var/www/html"]
 
-EXPOSE 80 443
 
 #CMD ["nginx", "-g", "daemon off;"]
 # Boot up Nginx, and PHP5-FPM when container is started
 CMD service php5-fpm start && nginx
+
+# Set the current working directory
+WORKDIR /var/www/html
+
+EXPOSE 80 443
