@@ -31,7 +31,7 @@ ADD ./php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
 # ADD index.php info
 ADD ./index.php /var/www/index.php
 # ADD default nginx sites-available
-ADD ./default /etc/nginx/sites-available/default
+#ADD ./default /etc/nginx/sites-available/default
 # ADD owncloud.conf sites-available
 #ADD ./owncloud.conf /etc/nginx/sites-available/owncloud.conf
 # Symbolic Link to Owncloud
