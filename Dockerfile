@@ -36,6 +36,7 @@ ADD ./default /etc/nginx/sites-available/default
 # ADD owncloud.conf sites-available
 ADD ./owncloud.conf /etc/nginx/sites-available/owncloud.conf
 
+# Volume
 VOLUME ["/var/www"]
 VOLUME ["/etc/nginx"]
 
