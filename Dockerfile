@@ -46,7 +46,8 @@ RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 
 # Volume
 VOLUME ["/etc/nginx", "/etc/nginx/conf.d", "/var/www/html"]
-
+RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf
+RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php5/fpm/php.ini
 
 #CMD ["nginx", "-g", "daemon off;"]
 # Boot up Nginx, and PHP5-FPM when container is started
@@ -56,3 +57,6 @@ CMD service php5-fpm start && nginx
 WORKDIR /var/www/html
 
 EXPOSE 80 443
+
+# Clean
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
