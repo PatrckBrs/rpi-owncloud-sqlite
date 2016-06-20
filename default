@@ -1,6 +1,6 @@
 server {
   index index.php index.html;
-  server_name _;
+  server_name codexatomos.org;
   root /var/www/html;
 
   location = /favicon.ico {
