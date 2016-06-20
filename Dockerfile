@@ -43,7 +43,7 @@ RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 VOLUME ["/etc/nginx", "/etc/nginx/conf.d", "/var/www/html"]
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf
 RUN sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php5/fpm/php.ini
-RUN sed -i "s/Berlin/Paris/" /etc/php5/fpm/php.ini
+RUN sed -i "s/date.timezone \= Europe\/Berlin/date.timezone \= Europe\/Paris/" /etc/php5/fpm/php.ini
 
 # Clean
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
