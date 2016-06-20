@@ -6,7 +6,7 @@ USER root
 
 # Update sources && install packages 
 RUN apt-get -y update && \
-apt-get install -y nginx php5-fpm ntp vim
+apt-get install -y nginx php5-fpm ntp vim owncloud
 
 # Update Locales
 RUN apt-get install -y locales dialog && \
@@ -28,7 +28,8 @@ RUN sed -i -e 's/listen \= 127.0.0.1\:9000/listen \= \/var\/run\/php5-fpm.sock/'
 ADD ./php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
 
 # ADD index.php info
-ADD ./index.php /var/www/html/index.php
+# ADD ./index.php /var/www/html/index.php
+RUN ln -s /usr/share/owncloud/index.php /var/www/html/index.php
 
 # COPY default nginx sites-available
 COPY ./default /etc/nginx/sites-available/default
