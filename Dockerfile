@@ -22,10 +22,10 @@ dpkg-reconfigure -f noninteractive locales
 RUN echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.debian./.fr./g' /etc/ntp.conf
 
 # PHP-FPM listen Unix socket
-#RUN sed -i -e 's/listen \= 127.0.0.1\:9000/listen \= \/var\/run\/php5-fpm.sock/' /etc/php5/fpm/pool.d/www.conf
+RUN sed -i -e 's/listen \= 127.0.0.1\:9000/listen \= \/var\/run\/php5-fpm.sock/' /etc/php5/fpm/pool.d/www.conf
 
 # ADD PHP-FPM Configuration
-#ADD ./php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
+ADD ./php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
 
 # ADD index.php info
 ADD ./index.php /var/www/html/index.php
@@ -35,12 +35,6 @@ COPY ./default /etc/nginx/sites-available/default
 
 # COPY nginx.conf 
 COPY nginx/config/nginx.conf /etc/nginx/nginx.conf
-
-# ADD owncloud.conf sites-available
-#ADD ./owncloud.conf /etc/nginx/sites-available/owncloud.conf
-
-# Symbolic Link to Owncloud
-#RUN ln -s /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud
 
 # Turn off daemon mode
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
