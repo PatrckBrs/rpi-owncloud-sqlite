@@ -7,7 +7,7 @@ USER root
 # Update sources && install packages 
 RUN apt-get -y update && \
 apt-get install -y nginx php5-fpm ntp vim owncloud \`
-sqlite3 php5-sqlite php5-gd
+sqlite3 php5-sqlite3
 
 # Update Locales
 RUN apt-get install -y locales dialog && \
