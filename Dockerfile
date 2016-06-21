@@ -4,11 +4,36 @@ MAINTAINER John Sladerz
 
 USER root
 
-# Update sources && install packages 
-RUN apt-get -y update && \
-apt-get install -y nginx php5-fpm ntp vim owncloud \
-sqlite3 php5-sqlite
-
+# Update sources && install packages
+RUN DEBIAN_FRONTEND=noninteractive ;\
+    apt-get update && \
+    apt-get install --assume-yes \
+        bzip2 \
+        cron \
+        nginx \
+        openssl \
+        php-apc \
+        php5-apcu \
+        php5-cli \
+        php5-curl \
+        php5-fpm \
+        php5-gd \
+        php5-gmp \
+        php5-imagick \
+        php5-intl \
+        php5-ldap \
+        php5-mcrypt \
+        php5-mysqlnd \
+        php5-pgsql \
+        php5-sqlite \
+        smbclient \
+        sudo \
+        wget \
+        ntp \
+        vim \
+        owncloud \
+        sqlite3
+        
 # Update Locales
 RUN apt-get install -y locales dialog && \
 locale-gen fr_FR fr_FR.UTF-8 && \ 
