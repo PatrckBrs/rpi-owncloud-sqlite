@@ -57,7 +57,7 @@ RUN echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/
 RUN sed -i -e 's/listen \= 127.0.0.1\:9000/listen \= \/var\/run\/php5-fpm.sock/' /etc/php5/fpm/pool.d/www.conf
 
 # Modification rights
-chown -R www-data:www-data /usr/share/owncloud/
+RUN chown -R www-data:www-data /usr/share/owncloud/
 
 # ADD PHP-FPM Configuration
 ADD ./php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
