@@ -6,39 +6,39 @@ USER root
 
 # Update sources && install packages
 RUN DEBIAN_FRONTEND=noninteractive ;\
-    apt-get update && \
-    apt-get install --assume-yes \
-        bzip2 \
-        cron \
-        nginx \
-        openssl \
-        php-apc \
-		php5 \
-        php5-apcu \
-        php5-cli \
-        php5-curl \
-        php5-fpm \
-        php5-gd \
-        php5-gmp \
-        php5-imagick \
-        php5-intl \
-        php5-ldap \
-        php5-mcrypt \
-        php5-mysqlnd \
-        php5-pgsql \
-        php5-sqlite \
-        smbclient \
-        sudo \
-        wget \
-        ntp \
-        vim \
-        owncloud \
-        sqlite3 \
-		curl \
-		libcurl3 \
-		libcurl3-dev \
-		php5-common \
-		php-xml-parser
+apt-get update && \
+apt-get install --assume-yes \
+bzip2 \
+cron \
+nginx \
+openssl \
+php-apc \
+php5 \
+php5-apcu \
+php5-cli \
+php5-curl \
+php5-fpm \
+php5-gd \
+php5-gmp \
+php5-imagick \
+php5-intl \
+php5-ldap \
+php5-mcrypt \
+php5-mysqlnd \
+php5-pgsql \
+php5-sqlite \
+smbclient \
+sudo \
+wget \
+ntp \
+vim \
+owncloud \
+sqlite3 \
+curl \
+libcurl3 \
+libcurl3-dev \
+php5-common \
+php-xml-parser
         
 # Update Locales
 RUN apt-get install -y locales dialog && \
