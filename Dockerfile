@@ -13,6 +13,7 @@ RUN DEBIAN_FRONTEND=noninteractive ;\
         nginx \
         openssl \
         php-apc \
+		php5 \
         php5-apcu \
         php5-cli \
         php5-curl \
@@ -32,7 +33,12 @@ RUN DEBIAN_FRONTEND=noninteractive ;\
         ntp \
         vim \
         owncloud \
-        sqlite3
+        sqlite3 \
+		curl \
+		libcurl3 \
+		libcurl3-dev \
+		php5-common \
+		php-xml-parser
         
 # Update Locales
 RUN apt-get install -y locales dialog && \
@@ -40,9 +46,9 @@ locale-gen fr_FR fr_FR.UTF-8 && \
 dpkg-reconfigure -f noninteractive locales
 
 # Change upload-limits and -sizes
-#RUN sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 2048M/g" /etc/php5/fpm/php.ini && \
-#   sudo sed -i "s/post_max_size = 8M/post_max_size =root123  2048M/g" /etc/php5/fpm/php.ini && \
-#   sudo echo 'default_charset = "UTF-8"' >> /etc/php5/fpm/php.in
+RUN sudo sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 2048M/g" /etc/php5/fpm/php.ini && \
+   sudo sed -i "s/post_max_size = 8M/post_max_size =root123  2048M/g" /etc/php5/fpm/php.ini && \
+   sudo echo 'default_charset = "UTF-8"' >> /etc/php5/fpm/php.in
 
 # Change the docker default timezone from UTC to Paris
 RUN echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.debian./.fr./g' /etc/ntp.conf
