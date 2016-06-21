@@ -1,25 +1,38 @@
 server {
-  index index.php index.html;
-  server_name localhost;
-  root /usr/share/owncloud/;
+	listen 80;
+	server_name cloud;
+	
+	# PATH ROOT INSTALL
+	root /usr/share/owncloud/;
+	
+	# set max upload size
+	client_max_body_size 10G;
+	fastcgi_buffers 64 4K;
+	
+	# Disable gzip to avoid the removal of the ETag header
+	gzip off;
 
-  location = /favicon.ico {
+	index index.php;
+ 
+ 
+	location = /favicon.ico {
     log_not_found off;
     access_log off;
-  }
-  location = /robots.txt {
+	}
+	
+	location = /robots.txt {
     allow all;
     log_not_found off;
     access_log off;
-  }
+	}
    
-  location ~ /\.svn/* {
+	location ~ /\.svn/* {
     deny all;
-  }
+	}
    
-  location ~ /\.git/* {
+	location ~ /\.git/* {
     deny all;
-  }
+	}
    
   location ~ \.php$ {
     try_files $uri =404;
