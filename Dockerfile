@@ -9,7 +9,7 @@ apt-get install --assume-yes \
 vim \
 locales \
 dialog \
-owcloud \
+owncloud \
 sqlite3
 
 RUN locale-gen fr_FR fr_FR.UTF-8 && \ 
