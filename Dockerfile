@@ -2,7 +2,8 @@
 FROM resin/rpi-raspbian:jessie
 MAINTAINER John Sladerz
 
-USER www-data
+#USER www-data # Fuck myself. Read the doc before paste. :D 
+# E: Unable to lock the administration directory (/var/lib/dpkg/), are you root? | Really ? :'( do you mean i fuck myself :D
 
 # Update sources && install packages
 RUN DEBIAN_FRONTEND=noninteractive ;\
