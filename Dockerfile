@@ -2,7 +2,7 @@
 FROM resin/rpi-raspbian:jessie
 MAINTAINER John Sladerz
 
-USER root
+USER www-data
 
 # Update sources && install packages
 RUN DEBIAN_FRONTEND=noninteractive ;\
