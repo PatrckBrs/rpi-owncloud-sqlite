@@ -8,7 +8,9 @@ apt-get update && \
 apt-get install --assume-yes \
 vim \
 locales \
-dialog 
+dialog \
+owcloud \
+sqlite3
 
 RUN locale-gen fr_FR fr_FR.UTF-8 && \ 
 dpkg-reconfigure -f noninteractive locales && \
@@ -24,4 +26,4 @@ echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.deb
 # Set the current working directory
 WORKDIR /var/www/html
 
-CMD /bin/bash
+CMD service php5-fpm start && nginx
