@@ -42,12 +42,15 @@ server {
 
         location ~ ^(.+?\.php)(/.*)?$ {
                 try_files $1 = 404;
-
+					fastcgi_split_path_info ^(.+\.php)(/.+)$;
                 include fastcgi_params;
                 fastcgi_param SCRIPT_FILENAME $document_root$1;
                 fastcgi_param PATH_INFO $2;
                 fastcgi_param HTTPS on;
-                fastcgi_pass php-handler;
+					fastcgi_index index.php;
+    				fastcgi_intercept_errors on;
+    				fastcgi_ignore_client_abort on;
+    				fastcgi_pass unix:/var/run/php5-fpm.sock;
         }
 
         # Optional: set long EXPIRES header on static assets
