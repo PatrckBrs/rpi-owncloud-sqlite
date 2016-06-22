@@ -82,8 +82,7 @@ sed -i "s/date.timezone \= Europe\/Berlin/date.timezone \= Europe\/Paris/" /etc/
 WORKDIR /var/www/html
 
 # Ports 
-EXPOSE 80
-EXPOSE 443
+EXPOSE 80 443
 
 # Boot up Nginx, and PHP5-FPM when container is started
 CMD service php5-fpm start && nginx
