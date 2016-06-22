@@ -23,6 +23,9 @@ echo 'default_charset = "UTF-8"' >> /etc/php5/fpm/php.in && \
 sed -i -e 's/listen \= 127.0.0.1\:9000/listen \= \/var\/run\/php5-fpm.sock/' /etc/php5/fpm/pool.d/www.conf && \
 echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.debian./.fr./g' /etc/ntp.conf
 
+COPY owncloud.conf /etc/nginx/sites-available/
+RUN ln -s /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud
+
 # Set the current working directory
 WORKDIR /var/www/html
 
