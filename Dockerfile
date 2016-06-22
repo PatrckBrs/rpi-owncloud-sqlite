@@ -1,6 +1,6 @@
 # Dockerfile to Owncloud
-FROM resin/rpi-raspbian:jessie
-MAINTAINER John Sladerz
+FROM patrckbrs/rpi-nginx-php5-fpm
+
 
 # Update sources && install packages
 RUN DEBIAN_FRONTEND=noninteractive ;\
