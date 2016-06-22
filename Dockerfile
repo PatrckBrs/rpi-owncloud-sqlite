@@ -8,7 +8,6 @@ apt-get update && \
 apt-get install --assume-yes \
 bzip2 \
 cron \
-nginx \
 openssl \
 php-apc \
 php5 \
@@ -57,7 +56,7 @@ ADD ./php5-fpm.conf /etc/nginx/conf.d/php5-fpm.conf
 
 # ADD index.php info
 # ADD ./index.php /var/www/html/index.php
-RUN ln -s /usr/share/owncloud/index.php /var/www/html/index.php
+#RUN ln -s /usr/share/owncloud/index.php /var/www/html/index.php
 
 # COPY default nginx sites-available
 COPY ./default /etc/nginx/sites-available/default
