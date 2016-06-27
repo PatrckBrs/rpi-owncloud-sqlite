@@ -1,16 +1,15 @@
 # Dockerfile to Owncloud
 FROM patrckbrs/rpi-nginx-php5-fpm
 
-
 # Update sources && install packages
 RUN DEBIAN_FRONTEND=noninteractive ;\
 apt-get update && \
 apt-get install --assume-yes \
-vim \
-locales \
-dialog \
-owncloud \
-sqlite3
+  vim \
+  locales \
+  dialog \
+  owncloud \
+  sqlite3
 
 RUN locale-gen fr_FR fr_FR.UTF-8 && \ 
 dpkg-reconfigure -f noninteractive locales && \
