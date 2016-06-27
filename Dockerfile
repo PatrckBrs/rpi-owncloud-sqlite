@@ -25,6 +25,9 @@ echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.deb
 COPY owncloud.conf /etc/nginx/sites-available/
 RUN ln -s /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud
 
+RUN chmod 0770 /usr/share/owncloud/data && chmod 0770 /usr/share/owncloud/private/ && \
+chown -R www-data:www-data /usr/share/owncloud
+
 # Set the current working directory
 WORKDIR /var/www/html
 
