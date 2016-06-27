@@ -9,6 +9,7 @@ apt-get install --assume-yes \
   locales \
   dialog \
   owncloud \
+  php5-gd \
   sqlite3
 
 RUN locale-gen fr_FR fr_FR.UTF-8 && \ 
@@ -24,8 +25,7 @@ echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.deb
 
 COPY owncloud.conf /etc/nginx/sites-available/
 RUN ln -s /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud && \
-rm /var/www/html/* && \
-ln -s /usr/share/owncloud/index.php /var/www/html
+ln -s /usr/share/owncloud/index.php /var/www/html/index.php
 
 RUN chmod 0770 /usr/share/owncloud/data && \
 chown -R www-data:www-data /usr/share/owncloud 
