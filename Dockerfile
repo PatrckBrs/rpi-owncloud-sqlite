@@ -15,8 +15,8 @@ apt-get install --assume-yes \
   wget
   
 RUN locale-gen fr_FR fr_FR.UTF-8 && \ 
-dpkg-reconfigure -f noninteractive locales && \
-apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+dpkg-reconfigure -f noninteractive locales
+
 
 # Change upload-limits and -sizes
 RUN sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 2048M/g" /etc/php5/fpm/php.ini && \
@@ -32,5 +32,9 @@ RUN chown -R www-data:www-data /var/www/owncloud && ln -s /etc/nginx/sites-avail
 
 # Set the current working directory
 WORKDIR /var/www/html
+
+VOLUME ["/etc/nginx/sites-enabled"]
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD service php5-fpm start && nginx
