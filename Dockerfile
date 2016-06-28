@@ -8,17 +8,9 @@ apt-get install --assume-yes \
   vim \
   locales \
   dialog \
-  php5 \
-  php5-json \
-  php5-gd \
-  php5-sqlite \
   curl \
   libcurl3-dev \
-  php5-curl \
-  php5-common \
-  php-xml-parser \
   sqlite3 \
-  php-apc \
   bzip2 \
   wget
   
@@ -33,7 +25,7 @@ echo 'default_charset = "UTF-8"' >> /etc/php5/fpm/php.in && \
 echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.debian./.fr./g' /etc/ntp.conf
 
 COPY ./owncloud.conf /etc/nginx/sites-available/ 
-#RUN ln -sf /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud && ln -sf /usr/share/owncloud/index.php /var/www/html/index.php
+RUN ln -sv /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud
 
 RUN cd /var/www && wget http://download.owncloud.org/community/owncloud-9.0.2.tar.bz2 && tar jxvf owncloud-9.0.2.tar.bz2 
 RUN chown -R www-data:www-data /var/www/owncloud && ln -s /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud
