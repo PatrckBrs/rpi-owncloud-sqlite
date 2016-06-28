@@ -37,4 +37,6 @@ WORKDIR /etc/nginx
 
 ENTRYPOINT /docker-entry.sh
 
+CMD service php5-fpm start && nginx
+
 EXPOSE 80 443
