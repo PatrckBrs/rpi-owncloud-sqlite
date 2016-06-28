@@ -33,7 +33,7 @@ RUN cd /var/www && wget http://download.owncloud.org/community/owncloud-9.0.2.ta
 RUN chown -R www-data:www-data /var/www/owncloud && ln -s /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud
 
 # Set the current working directory
-WORKDIR /etc/nginx
+WORKDIR /var/www/owncloud
 
 ENTRYPOINT /docker-entry.sh
 
