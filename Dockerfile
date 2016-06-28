@@ -19,6 +19,7 @@ apt-get install --assume-yes \
   php-xml-parser \
   sqlite3 \
   php-apc \
+  bzip2 \
   wget
   
 RUN locale-gen fr_FR fr_FR.UTF-8 && \ 
