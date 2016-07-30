@@ -1,5 +1,5 @@
 echo Starting Owncloud
-ln -sv /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud
+ln -sv /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 [[ -f /var/www/owncloud/config/config.php ]] && {
     grep -q APCu /var/www/owncloud/config/config.php ||
