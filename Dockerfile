@@ -25,7 +25,7 @@ sed -i "s/post_max_size = 8M/post_max_size =root123  2048M/g" /etc/php5/fpm/php.
 echo 'default_charset = "UTF-8"' >> /etc/php5/fpm/php.in && \
 echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.debian./.fr./g' /etc/ntp.conf
 
-COPY ./owncloud.conf /etc/nginx/sites-available/
+COPY ./default /etc/nginx/sites-available/
 COPY docker-entry.sh /
 RUN chmod +x /docker-entry.sh
 
