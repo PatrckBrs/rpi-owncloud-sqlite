@@ -12,7 +12,8 @@ apt-get install --assume-yes \
   libcurl3-dev \
   sqlite3 \
   bzip2 \
-  wget
+  wget \
+  supervisor
   
 RUN rm -rf /var/lib/apt/lists/* 
   
