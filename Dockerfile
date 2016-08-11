@@ -13,9 +13,8 @@ apt-get install --assume-yes \
   sqlite3 \
   bzip2 \
   wget \
-  supervisor
-  
-RUN rm -rf /var/lib/apt/lists/* 
+  supervisor && \
+  rm -rf /var/lib/apt/lists/* 
   
 RUN locale-gen fr_FR fr_FR.UTF-8 && \ 
 dpkg-reconfigure -f noninteractive locales
