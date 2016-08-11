@@ -27,16 +27,18 @@ echo 'default_charset = "UTF-8"' >> /etc/php5/fpm/php.in && \
 echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.debian./.fr./g' /etc/ntp.conf
 
 COPY ./default /etc/nginx/sites-available/
-COPY docker-entry.sh /
-RUN chmod +x /docker-entry.sh
 
 # New version 9.0.4
 RUN cd /var/www && wget http://download.owncloud.org/community/owncloud-9.0.4.tar.bz2 && tar jxvf owncloud-9.0.4.tar.bz2 && rm owncloud-9.0.4.tar.bz2 
 RUN chown -R www-data:www-data /var/www/owncloud && ln -s /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud
+RUN touch /var/www/owncloud/config/config.php && \
+    sed -i '/^);/i\  '"'memcache.local' => '\\\\OC\\\\Memcache\\\\APCu'," /var/www/owncloud/config/config.php
 
 # Set the current working directory
 WORKDIR /var/www/owncloud
 
-ENTRYPOINT /docker-entry.sh
-
+# Ports 
 EXPOSE 80 443
+
+# Boot up Nginx, and PHP5-FPM when container is started
+CMD ["/usr/bin/supervisord"]
