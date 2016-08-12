@@ -1,6 +1,8 @@
 # Dockerfile to Owncloud
 FROM patrckbrs/rpi-nginx-php5-fpm
 
+MAINTAINER Patrick Brs 
+
 # Update sources && install packages
 RUN DEBIAN_FRONTEND=noninteractive ;\
 apt-get update && \
