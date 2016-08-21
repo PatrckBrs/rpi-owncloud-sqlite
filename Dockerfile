@@ -22,8 +22,8 @@ RUN locale-gen fr_FR fr_FR.UTF-8 && \
 dpkg-reconfigure -f noninteractive locales
 
 # Change upload-limits and -sizes
-RUN sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 2048M/g" /etc/php5/fpm/php.ini && \
-sed -i "s/post_max_size = 8M/post_max_size =root123  2048M/g" /etc/php5/fpm/php.ini && \
+RUN sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 4096M/g" /etc/php5/fpm/php.ini && \
+sed -i "s/post_max_size = 8M/post_max_size = 4096M/g" /etc/php5/fpm/php.ini && \
 echo 'default_charset = "UTF-8"' >> /etc/php5/fpm/php.in && \
 echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.debian./.fr./g' /etc/ntp.conf
 
