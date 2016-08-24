@@ -31,7 +31,7 @@ COPY ./default /etc/nginx/sites-available/
 
 # New version 9.0.4
 RUN cd /var/www && wget http://download.owncloud.org/community/owncloud-9.0.4.tar.bz2 && tar jxvf owncloud-9.0.4.tar.bz2 && rm owncloud-9.0.4.tar.bz2 
-RUN chown -R www-data:www-data /var/www/owncloud && ln -s /etc/nginx/sites-available/owncloud.conf /etc/nginx/sites-enabled/owncloud
+RUN chown -R www-data:www-data /var/www/owncloud
 RUN touch /var/www/owncloud/config/config.php && \
     sed -i '/^);/i\  '"'memcache.local' => '\\\\OC\\\\Memcache\\\\APCu'," /var/www/owncloud/config/config.php
 
