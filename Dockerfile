@@ -1,7 +1,7 @@
 # Dockerfile to Owncloud
-FROM patrckbrs/rpi-nginx-php5-fpm
+FROM patrckbrs/nginx-php5-fpm-resin
 
-MAINTAINER Patrick Brs 
+MAINTAINER Patrick Brunias <patrick@brunias.org> 
 
 # Update sources && install packages
 RUN DEBIAN_FRONTEND=noninteractive ;\
@@ -42,4 +42,4 @@ WORKDIR /var/www/owncloud
 EXPOSE 80 443
 
 # Boot up Nginx, and PHP5-FPM when container is started
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
