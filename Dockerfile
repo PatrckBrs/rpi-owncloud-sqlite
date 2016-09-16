@@ -44,5 +44,5 @@ WORKDIR /var/www/owncloud
 EXPOSE 80 443
 
 # Boot up Nginx, and PHP5-FPM when container is started
-ENTRYPOINT ["/usr/bin/start.sh"]
+#ENTRYPOINT ["/usr/bin/start.sh"]
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
