@@ -38,7 +38,7 @@ WORKDIR /var/www/owncloud
 
 # Start container
 COPY start.sh /
-ENTRYPOINT ["/start.sh"]
+#ENTRYPOINT ["/start.sh"]
 
 # Ports 
 EXPOSE 80 443
