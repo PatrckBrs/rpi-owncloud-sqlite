@@ -37,8 +37,9 @@ RUN chown -R www-data:www-data /var/www/owncloud
 WORKDIR /var/www/owncloud
 
 # Start container
-COPY start.sh /
-#ENTRYPOINT ["/start.sh"]
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
+ENTRYPOINT ["docker-entrypoint.sh"]
 
 # Ports 
 EXPOSE 80 443
