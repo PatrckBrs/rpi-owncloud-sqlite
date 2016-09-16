@@ -33,16 +33,15 @@ COPY ./default /etc/nginx/sites-available/
 RUN cd /var/www && wget http://download.owncloud.org/community/owncloud-9.0.4.tar.bz2 && tar jxvf owncloud-9.0.4.tar.bz2 && rm owncloud-9.0.4.tar.bz2 
 RUN chown -R www-data:www-data /var/www/owncloud
 
-# Start container
-COPY start.sh /usr/bin/
-CMD chmod +x /usr/bin/start.sh
-    
 # Set the current working directory
 WORKDIR /var/www/owncloud
+
+# Start container
+COPY start.sh /
+ENTRYPOINT ["/start.sh"]
 
 # Ports 
 EXPOSE 80 443
 
 # Boot up Nginx, and PHP5-FPM when container is started
-#ENTRYPOINT ["/usr/bin/start.sh"]
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
