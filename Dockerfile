@@ -39,7 +39,7 @@ WORKDIR /var/www/owncloud
 # Start container
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
-ENTRYPOINT ["docker-entrypoint.sh"]
+#ENTRYPOINT ["docker-entrypoint.sh"]
 
 # Ports 
 EXPOSE 80 443
