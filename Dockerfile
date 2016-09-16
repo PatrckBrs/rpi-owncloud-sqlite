@@ -34,8 +34,8 @@ RUN cd /var/www && wget http://download.owncloud.org/community/owncloud-9.0.4.ta
 RUN chown -R www-data:www-data /var/www/owncloud
 
 # Start container
-COPY start.sh /usr/bin//start.sh
-CMD chmod +x /usr/bin//start.sh
+COPY start.sh /usr/bin/
+CMD chmod +x /usr/bin/start.sh
     
 # Set the current working directory
 WORKDIR /var/www/owncloud
@@ -44,5 +44,5 @@ WORKDIR /var/www/owncloud
 EXPOSE 80 443
 
 # Boot up Nginx, and PHP5-FPM when container is started
-#ENTRYPOINT ["/usr/bin/start.sh"]
+ENTRYPOINT ["/usr/bin/start.sh"]
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
