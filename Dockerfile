@@ -32,14 +32,16 @@ COPY ./default /etc/nginx/sites-available/
 # New version 9.0.4
 RUN cd /var/www && wget http://download.owncloud.org/community/owncloud-9.0.4.tar.bz2 && tar jxvf owncloud-9.0.4.tar.bz2 && rm owncloud-9.0.4.tar.bz2 
 RUN chown -R www-data:www-data /var/www/owncloud
-RUN touch /var/www/owncloud/config/config.php && \
-    sed -i '/^);/i\  '"'memcache.local' => '\\\\OC\\\\Memcache\\\\APCu'," /var/www/owncloud/config/config.php
 
 # Set the current working directory
 WORKDIR /var/www/owncloud
+
+# Start container
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh && ln -s /usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
 
 # Ports 
 EXPOSE 80 443
 
 # Boot up Nginx, and PHP5-FPM when container is started
-CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
+CMD ["docker-entrypoint.sh"]
