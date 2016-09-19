@@ -39,11 +39,9 @@ WORKDIR /var/www/owncloud
 # Start container
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh && ln -s /usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
-#ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
 
 # Ports 
 EXPOSE 80 443
 
 # Boot up Nginx, and PHP5-FPM when container is started
 CMD ["docker-entrypoint.sh"]
-#CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
