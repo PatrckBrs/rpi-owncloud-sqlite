@@ -1,3 +1,3 @@
 # Raspberry Pi - Owncloud Sqlite
 
-<img src="http://bit.ly/2cyzE60">
+<img src="http://jenkins.test.codexatomos.org/job/Owncloud/badge/icon">
