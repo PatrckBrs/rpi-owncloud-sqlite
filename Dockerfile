@@ -12,6 +12,7 @@ apt-get install --assume-yes \
   dialog \
   curl \
   libcurl3-dev \
+  php5-sqlite \
 #  sqlite3 \
   bzip2 \
   wget \
