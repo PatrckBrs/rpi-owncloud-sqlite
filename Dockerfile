@@ -12,7 +12,7 @@ apt-get install --assume-yes \
   dialog \
   curl \
   libcurl3-dev \
-  sqlite3 \
+#  sqlite3 \
   bzip2 \
   wget \
   supervisor && \
