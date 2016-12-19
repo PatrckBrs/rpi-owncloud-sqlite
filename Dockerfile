@@ -15,7 +15,7 @@ apt-get install --assume-yes \
   php5-sqlite \
   bzip2 \
   wget \
-  supervisor && \2
+  supervisor && \
   rm -rf /var/lib/apt/lists/* 
   
 RUN locale-gen fr_FR fr_FR.UTF-8 && \ 
