@@ -5,8 +5,7 @@ if [ -f "/var/www/owncloud/config/config.php" ]
 then
 if  [[ "$MEM" -eq "0" ]]
 then
-  sed -i '/^);/i\  '"'memcache.local' => '\\\\OC\\\\Memcache\\\\APCu'," /var/www
-/owncloud/config/config.php
+  sed -i '/^);/i\  '"'memcache.local' => '\\\\OC\\\\Memcache\\\\APCu'," /var/www/owncloud/config/config.php
 else
 echo "OK"
   fi
