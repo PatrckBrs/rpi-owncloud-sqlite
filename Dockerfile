@@ -1,6 +1,8 @@
 # Dockerfile to Owncloud
 FROM patrckbrs/nginx-php5-fpm-resin
 
+ENV OWNCLOUD_VERSION=9.1.4
+
 LABEL maintainer "Patrick Brunias <patrick@brunias.org>"
 
 # Update sources && install packages
@@ -30,7 +32,7 @@ echo "Europe/Paris" > /etc/timezone && dpkg-reconfigure tzdata && sed -i 's/.deb
 COPY ./default /etc/nginx/sites-available/
 
 # New version 9.1.3
-RUN cd /var/www && wget https://download.owncloud.org/community/owncloud-9.1.3.tar.bz2 && tar jxvf owncloud-9.1.3.tar.bz2 && rm owncloud-9.1.3.tar.bz2 
+RUN cd /var/www && wget https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2 && tar jxvf owncloud-${OWNCLOUD_VERSION}.tar.bz2 && rm owncloud-${OWNCLOUD_VERSION}.tar.bz2 
 RUN chown -R www-data:www-data /var/www/owncloud
 
 # Set the current working directory
