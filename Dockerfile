@@ -43,7 +43,7 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh && ln -s /usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
 
 # Test HEALTHCHECK
-HEALTHCHECK CMD curl --fail http://localhost:80 || exit 1
+#HEALTHCHECK CMD curl --fail http://localhost:80 || exit 1
 
 # Ports 
 EXPOSE 80 443
