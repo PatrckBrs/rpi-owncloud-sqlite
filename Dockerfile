@@ -1,7 +1,7 @@
 # Dockerfile to Owncloud
 FROM patrckbrs/nginx-php5-fpm-resin
 
-ENV OWNCLOUD_VERSION=9.1.6
+ENV OWNCLOUD_VERSION=10.0.2
 
 LABEL maintainer "Patrick Brunias <patrick@brunias.org>"
 
